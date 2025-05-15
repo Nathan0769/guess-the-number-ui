@@ -13,38 +13,60 @@
         Guess the number
       </h1>
     </div>
-    <div id="landing-page" class="p-4 bg-purple-300 flex justify-center">
+    <div
+      id="landing-page"
+      class="p-8 bg-purple-300 max-w-2xl mx-auto mt-10 rounded-2xl shadow-lg py-4"
+    >
       <p class="font-bold text-center p-4">
-        L'application générera un nombre aléatoire entre 1 et 500, et votre
-        tâche est de le trouver en aussi peu d'essais que possible.
+        L'application générera un nombre aléatoire entre 1 et 500. <br />
+        Votre tâche est de le trouver en aussi peu d'essais que possible.
       </p>
-      <button id="start" class="float-right">Start</button>
+      <div class="flex justify-end">
+        <button
+          id="start"
+          class="text-white px-4 py-4 rounded hover:bg-purple-700 transition"
+        >
+          Start
+        </button>
+      </div>
     </div>
 
     <div
       id="game-page"
-      class="p-4 bg-purple-300 hidden mt-8 flex justify-center"
+      class="p-6 bg-purple-300 hidden mt-8 max-w-4xl mx-auto rounded-lg shadow flex flex-row justify-between items-start gap-12"
     >
-      <p id="text-explication" class="font-bold text-center p-4">
-        Guess a number between 1 and 500
-      </p>
-      <p class="font-bold text-center p-4">
-        Tentatives : <span id="tentatives-count">0</span>
-      </p>
-      <form id="form">
+      <div
+        class="flex flex-col justify-center items-center bg-purple-400 text-white p-6 rounded-xl flex-1 min-h-[200px]"
+      >
+        <p id="text-explication" class="font-bold text-center p-4">
+          Guess a number between 1 and 500
+        </p>
+        <p class="font-bold text-center p-4">
+          Tentatives : <span id="tentatives-count">0</span>
+        </p>
+      </div>
+      <form
+        id="form"
+        class="flex flex-col justify-center items-center p-6 rounded-xl flex-1 min-h-[200px] space-y-4 bg-purple-400"
+      >
         <input
           id="guess"
           name="guess"
           placeholder="Tapez un nombre entre 1 et 500"
         />
-        <button id="submit" class="p-4">Guess</button>
+        <button
+          id="submit"
+          class="text-white px-4 py-4 rounded-xl hover:bg-purple-700 transition min-w-[200px]"
+        >
+          Guess
+        </button>
       </form>
     </div>
     <div id="guessMsg">
-      <p id="msg" class="font-bold text-center p-4"></p>
+      <p id="msg" class="font-bold text-center p-2"></p>
     </div>
-    <div id="small-big" class="flex justify-center gap-8 mt-10 hidden">
-      <div id="small" class="w-80 h-80 border-2 border-purple-950 rounded-sm">
+    <div id="small-big" class="flex justify-center gap-8 mt-6 hidden">
+      <div id="small" class="w-80 h-80 border-2 border-purple-950 rounded-2xl">
         <h2 class="text-center font-semibold">Trop petit 📉</h2>
         <ul
           id="ul-small"
@@ -52,7 +74,7 @@
         ></ul>
       </div>
 
-      <div id="big" class="w-80 h-80 border-2 border-purple-950 rounded-sm">
+      <div id="big" class="w-80 h-80 border-2 border-purple-950 rounded-2xl">
         <h2 class="text-center font-semibold">Trop grand 📈</h2>
         <ul
           id="ul-big"

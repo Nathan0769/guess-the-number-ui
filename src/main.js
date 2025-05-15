@@ -136,7 +136,7 @@ class Game {
   win() {
     setTimeout(() => {
       location.reload();
-    }, 7000);
+    }, 4000);
   }
 }
 
