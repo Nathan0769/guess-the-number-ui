@@ -28,6 +28,7 @@ class Display {
 
   checkResultDisplay(userDisplay) {
     const msg = document.querySelector("#msg");
+    document.querySelector("#msg")?.classList.remove("hidden");
 
     if (userDisplay === "small") {
       if (msg) {
@@ -47,6 +48,21 @@ class Display {
       }
     }
   }
+
+  restartDisplay(tentatives) {
+    const div = document.querySelector("#win-screen");
+    div?.classList.toggle("hidden");
+
+    const countSpan = document.querySelector("#tentatives-count-win");
+    if (countSpan) {
+      countSpan.textContent = tentatives;
+    }
+  }
+
+  resetScreens() {
+    document.querySelector("#win-screen")?.classList.add("hidden");
+    document.querySelector("#msg")?.classList.add("hidden");
+  }
 }
 
 class Game {
@@ -54,19 +70,30 @@ class Game {
     this.tentatives = 0;
     this.display = new Display();
     this.numberToFind = 0;
+    this.play = true;
   }
 
   start() {
+    this.display.hidden();
+    this.restart();
+    this.guessNumber();
     this.init();
   }
 
   init() {
     this.numberToFind = this.randomNumber;
-    console.log(this.numberToFind);
 
-    this.display.hidden();
+    this.tentatives = 0;
+    this.display.showAttemps(this.tentatives);
 
-    this.guessNumber();
+    // @ts-ignore
+    document.querySelector("#guess").value = "";
+    // @ts-ignore
+    document.querySelector("#ul-small").innerHTML = "";
+    // @ts-ignore
+    document.querySelector("#ul-big").innerHTML = "";
+
+    this.display.resetScreens();
   }
 
   get randomNumber() {
@@ -113,8 +140,11 @@ class Game {
     if (userNumber === this.numberToFind) {
       this.display.showAttemps(this.tentatives);
       this.display.checkResultDisplay("win");
-      this.win();
+
+      this.win(this.tentatives);
     }
+    // @ts-ignore
+    document.querySelector("#guess").value = "";
   }
 
   tooSmall(userNumber) {
@@ -133,12 +163,19 @@ class Game {
     ul?.appendChild(li);
   }
 
-  win() {
-    setTimeout(() => {
-      location.reload();
-    }, 4000);
+  win(tentatives) {
+    this.display.restartDisplay(tentatives);
+    this.restart();
+  }
+
+  restart() {
+    const button = document.querySelector("#restart");
+
+    button?.addEventListener("click", () => {
+      this.init();
+    });
   }
 }
 
 const game = new Game();
-game.init();
+game.start();

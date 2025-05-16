@@ -83,6 +83,27 @@
       </div>
     </div>
 
+    <div
+      id="win-screen"
+      class="hidden fixed inset-0 bg-purple-900 bg-opacity-90 flex items-center justify-center z-50"
+    >
+      <div
+        class="bg-white rounded-2xl shadow-2xl p-10 text-center max-w-md w-full animate-scale-in"
+      >
+        <h2 class="text-3xl font-bold text-purple-800 mb-4">Bravo ! 🎉</h2>
+        <p class="text-lg text-purple-700 mb-6">
+          Tu as trouvé le bon nombre en
+          <span id="tentatives-count-win">0</span> tentatives !
+        </p>
+        <button
+          id="restart"
+          class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-6 rounded-lg transition"
+        >
+          Rejouer 🔁
+        </button>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
